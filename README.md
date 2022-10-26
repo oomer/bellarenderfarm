@@ -8,13 +8,13 @@
 1. Introduce the various moving parts of the **renderfarm**
 2. **Create** and **share** **`C:\\DeadlineRepository10`** on a Windows computer, this will be the  **`Repository`**
 >    - pretend your server is named **`SAURON`**<sup>simplifies this guide</sup>
-    - **UNC path** would thus be **`\\SAURON\DeadlineRepository10`** 
+>    - **UNC path** would thus be **`\\SAURON\DeadlineRepository10`** 
 3. **Create** a folder called **`C:\\DeadlineRepository10\BellaShared`**<sup>simplifies this guide</sup>
     - feel free to substitute your own network share
     - your Bella files, textures and references live here
 4. Install **DeadlineRepository** software along with a MongoDB database on **`SAURON`** 
 5. Run installers for **DeadlineClient** and **BellaCLI** on five Windows computers ( including **`SAURON`** )
-6. Copy **Bella** plugin scipts to **`\\SAURON\DeadlineRepository\plugins\Bella'**
+6. Copy **Bella** plugin scripts to **`\\SAURON\DeadlineRepository\plugins\Bella'**
 7. Copy **Bella** submission scripts to **`\\SAURON\DeadlineRepository\scripts\Submission\'**
 8. Copy sample scenes to  **`\\SAURON\DeadlineRepository\BellaShared\'**
 9. Copy sample scenes to the **`BellaShared`**
