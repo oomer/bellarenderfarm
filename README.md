@@ -14,14 +14,13 @@
     - your Bella files, textures and references live here
 4. Install **DeadlineRepository** software along with a MongoDB database on **`SAURON`** 
 5. Run **DeadlineClient** and **BellaCLI** installers on five Windows computers ( including **`SAURON`** )
-6. Copy **Bella** plugin scripts to **`\\SAURON\DeadlineRepository\plugins\Bella'**
-7. Copy **Bella** submission scripts to **`\\SAURON\DeadlineRepository\scripts\Submission\'**
-8. Copy sample scenes to  **`\\SAURON\DeadlineRepository\BellaShared\'**
-9. Copy sample scenes to the **`BellaShared`**
-10. From **`Worker1`** right click **deadlinelauncher** in systemtray **Submit->BellaTimeOfDay**
-11. Choose sample scene **//SAURON/DeadlineRepository10/BellaShared/BellaTimeOfDay.bsx**  
-12. Hit submit and go make a sandwich 
-13. right click systemtray->**deadlinelauncher**->Launch **Monitor** to check on renderfarm
+6. Copy **Bella** plugin scripts to **`\\\\SAURON\DeadlineRepository\plugins\Bella\'**
+7. Copy **Bella** submission scripts to **`\\\\SAURON\DeadlineRepository\scripts\Submission\'**
+8. Copy sample scenes to  **`\\\\SAURON\DeadlineRepository\BellaShared\'**
+9. From **`Computer1`** right click **deadlinelauncher** in systemtray **Submit->BellaTimeOfDay**
+10. Choose sample scene **\\\\SAURON\DeadlineRepository10\BellaShared\BellaTimeOfDay.bsx**  
+11. Hit submit and go make a sandwich 
+12. right click systemtray->**deadlinelauncher**->Launch **Monitor** to check on renderfarm
 
 ```mermaid
 erDiagram
