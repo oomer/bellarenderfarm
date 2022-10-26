@@ -13,7 +13,7 @@
     - feel free to substitute your own network share
     - your Bella files, textures and references live here
 4. Install **DeadlineRepository** software along with a MongoDB database on **`SAURON`** 
-5. Run installers for **DeadlineClient** and **BellaCLI** on five Windows computers ( including **`SAURON`** )
+5. Run **DeadlineClient** and **BellaCLI** installers on five Windows computers ( including **`SAURON`** )
 6. Copy **Bella** plugin scripts to **`\\SAURON\DeadlineRepository\plugins\Bella'**
 7. Copy **Bella** submission scripts to **`\\SAURON\DeadlineRepository\scripts\Submission\'**
 8. Copy sample scenes to  **`\\SAURON\DeadlineRepository\BellaShared\'**
@@ -83,24 +83,39 @@ erDiagram
 >#### Here are some of the client programs in:
 <sub>`C:\Program Files\Thinkbox\Deadline10\bin\`</sub>
 #### Deadline's Launcher<sup>Hub for all tools</sup>
-When you **log into Windows**<sup>Yes, you HAVE TO log in for this simplified renderfarm</sup> **deadlinelauncher.exe** runs and will launch the **deadlineworker.exe**
+```
+When you **log into Windows deadlinelauncher.exe runs 
+which then launches deadlineworker.exe
+```
+
 #### Deadline's Worker
-**deadlineworker** watches for jobs and then launches bella_cli<sup>Think of this as the Uber driver
+```
+deadlineworker.exe watches for jobs and then launches bella_cli
+```
+
 #### Deadline's Monitor
-**deadlinemonitor.exe** displays available **Workers** <sup>Think of this as a beefed up Uber app, where you can see ALL the Uber drivers</sup>
-<br>Along with monitoring, you can cancel, redirect, and submit jobs
+```
+deadlinemonitor.exe** displays computers available to render
+Along with monitoring, you can cancel, redirect, and submit jobs
+```
 
 ###### Server Software 
-**DeadlineRepository-10.1.23.6-windows.installer.exe **
->Deadline's servers provide instructions and render data to the **deadlineworker.exe**. 
+**DeadlineRepository-10.1.23.6-windows.installer.exe**
+```
+Deadline's servers provide instructions and render data to the **deadlineworker.exe**.
+```
 
 #### Repository
-Shared renderfarm software<sup>mostly Python</sup> and job data
+```
+Shared renderfarm software and job data
+```
 
 #### Database
-This accepts job submissions and tracks fullfillment<sup>Think of this as the UberEats platform, where hungry patrons submit orders and where Uber drivers check for jobs.   
+```
+This accepts job submissions and tracks fullfillment
+```
 
-## STEP A. Create a network directory `Repository`
+## STEP A. Create a network directory Repository
 
 remember we are playing pretend, where one of your computers is named Sauron
 - Create folder **DeadlineRepository10** in C: drive on the **SAURON** 
@@ -108,7 +123,7 @@ remember we are playing pretend, where one of your computers is named Sauron
 - Add **Everyone**, change Permission Level to **Read/Write**. Click Share<sup>requires admin password</sub>
 
     - [x] **\\\\SAURON\DeadlineRepository10** <sup>network share</sup>
-    - [x] all computers can read and write to the **\\\\SAURON\\DeadlineRepository10**<sup>See official docs for read/write security recommendations
+    - [x] all computers can read and write to the **\\\\SAURON\\DeadlineRepository10**<sup>See official docs for security recommendations
     - [x] Sauron has **static** ip address not dhcp<sup>recommended for any server</sup>
 
 ## STEP B. Run installer on **SAURON**
