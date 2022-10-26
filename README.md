@@ -76,41 +76,43 @@ erDiagram
 >[Deadline](https://www.awsthinkbox.com/deadline) is renderfarm software developed by Thinkbox Software and owned by Amazon. Before August 2022 it was available with usage based licenses but is now [free of charge](https://aws.amazon.com/blogs/media/aws-thinkbox-products-now-available-free-of-charge/) on Windows, Mac and Linux.
 > Download installers from https://awsthinkbox.com. An Amazon Web Services account is required. [Deadline's history](https://www.fxguide.com/quicktakes/aws-thinkbox-deadline-a-brief-history/)
 
-###### Client Software 
+#### Client Software 
 
-**DeadlineClient-10.1.23.6-windows-installer.exe**
+`DeadlineClient-10.1.23.6-windows-installer.exe`
 
 >#### Here are some of the client programs in:
 <sub>`C:\Program Files\Thinkbox\Deadline10\bin\`</sub>
-#### Deadline's Launcher<sup>Hub for all tools</sup>
+##### Deadline's Launcher<sup>Hub for all tools</sup>
 ```
-When you **log into Windows deadlinelauncher.exe runs 
-which then launches deadlineworker.exe
+When you log into Windows, deadlinelauncher.exe runs
+It is a useful hub to launch all other tools.
 ```
 
-#### Deadline's Worker
+##### Deadline's Worker
 ```
 deadlineworker.exe watches for jobs and then launches bella_cli
 ```
 
-#### Deadline's Monitor
+##### Deadline's Monitor
 ```
-deadlinemonitor.exe** displays computers available to render
+deadlinemonitor.exe displays all computers that can render
 Along with monitoring, you can cancel, redirect, and submit jobs
 ```
 
-###### Server Software 
-**DeadlineRepository-10.1.23.6-windows.installer.exe**
+---
+
+#### Server Software 
+`DeadlineRepository-10.1.23.6-windows.installer.exe`
 ```
-Deadline's servers provide instructions and render data to the **deadlineworker.exe**.
+Deadline's servers provide instructions and render data to the deadlineworker.exe.
 ```
 
-#### Repository
+##### Repository
 ```
 Shared renderfarm software and job data
 ```
 
-#### Database
+##### Database
 ```
 This accepts job submissions and tracks fullfillment
 ```
@@ -123,7 +125,7 @@ remember we are playing pretend, where one of your computers is named Sauron
 - Add **Everyone**, change Permission Level to **Read/Write**. Click Share<sup>requires admin password</sub>
 
     - [x] **\\\\SAURON\DeadlineRepository10** <sup>network share</sup>
-    - [x] all computers can read and write to the **\\\\SAURON\\DeadlineRepository10**<sup>See official docs for security recommendations
+    - [x] all computers can read/write to **\\\\SAURON\\DeadlineRepository10**<sup>See official docs for security recommendations
     - [x] Sauron has **static** ip address not dhcp<sup>recommended for any server</sup>
 
 ## STEP B. Run installer on **SAURON**
