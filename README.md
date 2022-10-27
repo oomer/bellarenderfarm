@@ -14,9 +14,9 @@
     - your Bella files, textures and references live here
 4. Install **DeadlineRepository** software along with a MongoDB database on **`SAURON`** 
 5. Run **DeadlineClient** and **BellaCLI** installers on five Windows computers ( including **`SAURON`** )
-6. Copy **Bella** plugin scripts to **`\\\\SAURON\DeadlineRepository\plugins\Bella\'**
-7. Copy **Bella** submission scripts to **`\\\\SAURON\DeadlineRepository\scripts\Submission\'**
-8. Copy sample scenes to  **`\\\\SAURON\DeadlineRepository\BellaShared\'**
+6. Copy **Bella** plugin scripts to **`\\\\SAURON\DeadlineRepository10\plugins\'**
+7. Copy **Bella** submission scripts to **`\\\\SAURON\DeadlineRepository10\scripts\Submission\'**
+8. Copy sample scenes to  **`\\\\SAURON\DeadlineRepository10\BellaShared\'**
 9. From **`Computer1`** right click **deadlinelauncher** in systemtray **Submit->BellaTimeOfDay**
 10. Choose sample scene **\\\\SAURON\DeadlineRepository10\BellaShared\BellaTimeOfDay.bsx**  
 11. Hit submit and go make a sandwich 
@@ -66,9 +66,12 @@ erDiagram
 >[Bella Render](https://bellarender.com) is a modern commercial path tracer developed by Diffuse Logic. DCC plugins, a standalone GUI and command line interface (CLI) are supported on MacOS and Windows. The CLI executable is available for Linux.
 - A Bella license **include** 5 node licenses for command line rendering using: 
     - <sub>`C:\Program Files\Diffuse Logic\bella_cli.exe`</sub>
-    ###### Technical sidenotes:
+    ###### Renderfarm sidenotes:
     - Bella's **.bsz** file format wraps models and textures into a single file
     - **bella_cli.exe** has a **parseFragment** argument allowing sophisticated rendertime customizations
+    - The Atlas solver can do cooperative rendering of a single scenefile on multiple computers
+	- Deadline can add a post-render job to merge all renders into a single image
+	- Saturn cooperative rendering support is planned
 
 ### Deadline 
 
@@ -79,8 +82,9 @@ erDiagram
 
 `DeadlineClient-10.1.23.6-windows-installer.exe`
 
->#### Here are some of the client programs in:
-<sub>`C:\Program Files\Thinkbox\Deadline10\bin\`</sub>
+##### Here are some of the client programs in:
+`**C:\Program Files\Thinkbox\Deadline10\bin\**`
+
 ##### Deadline's Launcher<sup>Hub for all tools</sup>
 ```
 When you log into Windows, deadlinelauncher.exe runs
@@ -102,24 +106,25 @@ Along with monitoring, you can cancel, redirect, and submit jobs
 
 #### Server Software 
 `DeadlineRepository-10.1.23.6-windows.installer.exe`
-```
-Deadline's servers provide instructions and render data to the deadlineworker.exe.
-```
+
+The Deadline server provides instructions and render data to the clients
 
 ##### Repository
 ```
 Shared renderfarm software and job data
+Copy Bella plugin here and all clients will source it from here.
 ```
 
 ##### Database
 ```
-This accepts job submissions and tracks fullfillment
+Open source NoSQL relational database called MongoDB listening on port 27100
+This accepts job submissions and tracks fullfillment.
 ```
 
-## STEP A. Create a network directory Repository
+## STEP A. Create a network share to host the `Deadline Repository`
 
 remember we are playing pretend, where one of your computers is named Sauron
-- Create folder **DeadlineRepository10** in C: drive on the **SAURON** 
+- Create folder **DeadlineRepository10** in C: drive on **SAURON** 
 - right click **C:/DeadlineRepository10**->Properties->Sharing, click **Share**
 - Add **Everyone**, change Permission Level to **Read/Write**. Click Share<sup>requires admin password</sub>
 
@@ -127,7 +132,7 @@ remember we are playing pretend, where one of your computers is named Sauron
     - [x] all computers can read/write to **\\\\SAURON\\DeadlineRepository10**<sup>See official docs for security recommendations
     - [x] Sauron has **static** ip address not dhcp<sup>recommended for any server</sup>
 
-## STEP B. Run installer on **SAURON**
+## STEP B. Run Deadline Repository installer on Sauron
 
 - DeadlineRepository-10.1.23.6-windows.installer.exe <sup>requires admin password</sup> 
 
