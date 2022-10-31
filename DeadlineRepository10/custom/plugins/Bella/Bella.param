@@ -1,0 +1,24 @@
+[About]
+Type=label
+Label=About
+Category=About Plugin
+CategoryOrder=-1
+Default=Bella Plugin
+Description=Not configurable
+
+[ConcurrentTasks]
+Type=label
+Label=ConcurrentTasks
+Category=About Plugin
+CategoryOrder=-1
+Default=True
+Description=Not configurable
+
+[BellaPluginRenderExecutable]
+Type=multilinemultifilename
+Category=Render Executables
+CategoryOrder=0
+Index=0
+Label=Bella CLI path
+Default=C:\Program Files\Diffuse Logic\Bella CLI\bella_cli.exe;/Applications/bella_cli.app/Contents/MacOS/bella_cli;/opt/Thinkbox/Deadline10/bin/bella_cli
+Description=Path to the Bella CLI. Populated with Windows and MacOS default installer locations. Linux file arbitrarily put in client Deadline dir

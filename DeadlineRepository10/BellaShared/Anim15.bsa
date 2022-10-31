@@ -1,0 +1,83 @@
+# bella scene
+# version: 20220609
+# time: 2022-10-31T09:30:09-0700
+
+xform sphereXform:
+  .name                    = "sphere";
+  .children[*]             = sphere;
+  .material                = quickMaterial;
+  .steps[0].xform          = mat4(-0.422618261741 0.906307787037 0 0 -0.906307787037 -0.422618261741 0 0 0 0 1 0 0 0 0.025 1);
+  ._meta.steps.xform.pos   = pos3(0 0 0.025);
+  ._meta.steps.xform.rot   = vec3(0 0 2.007128639793);
+  ._meta.steps.xform.sca   = vec3(1 1 1);
+
+sensor sensor;
+xform cameraXform:
+  .name                    = "camera";
+  .children[*]             = camera;
+  .steps[0].xform          = mat4(0.009135454576 0.00406736643 0 0 0.000706290769 -0.001586355039 -0.00984807753 0 -0.004005573992 0.008996666486 -0.001736481775 0 0.056820115674 -0.128621068019 0.049290553786 1);
+  ._meta.steps.xform.pos   = pos3(0.056820115674 -0.128621068019 0.049290553786);
+  ._meta.steps.xform.rot   = vec3(-1.745329251994 0 0.418879020479);
+  ._meta.steps.xform.sca   = vec3(0.009999999999 0.01 0.009999999991);
+
+sphere sphere:
+  .radius                  = 0.025f;
+
+plane plane:
+  .sizeX                   = 0.5f;
+  .sizeY                   = 0.5f;
+
+sun sun:
+  .size                    = 7f;
+  .day                     = 15u;
+  .hour                    = 15u;
+  .multiplier              = 1.1f;
+
+quickMaterial quickMaterial:
+  .color                   = rgba(0.9 0.9 0.9 1);
+  .type                    = "ceramic";
+  .preview.xform           = mat4(-0.01 0 0 0 0 0 -0.01 0 0 -0.01 0 0 0 0.06 0.025 1);
+  .preview.focusDist       = 0.0619318453f;
+
+thinLens thinLens:
+  .steps[0].fStop          = 32.0001f;
+  .steps[0].focalLen       = 50f;
+  .steps[0].focusDist      = 0.118f;
+
+camera camera:
+  .lens                    = thinLens;
+  .resolution              = vec2(640 480);
+  .sensor                  = sensor;
+
+beautyPass beautyPass;
+colorDome colorDome:
+  .altitude                = 61f;
+  .horizon                 = rgba(0.063010022044 0.124771818519 1 1);
+  .luminance               = 6330f;
+
+settings settings:
+  .beautyPass              = beautyPass;
+  .camera                  = camera;
+  .environment             = colorDome;
+  .sun                     = sun;
+  .threads                 = -1;
+
+global global:
+  .states[*]               = state;
+
+state state:
+  .settings                = settings;
+  .world                   = world;
+
+xform world:
+  .children[*]             = cameraXform;
+  .children[*]             = sphereXform;
+  .children[*]             = planeXform;
+  .steps[0].__sca          = vec3(1 1 1);
+  ._meta.steps.xform.sca   = vec3(1 1 1);
+
+xform planeXform:
+  .name                    = "plane";
+  .children[*]             = plane;
+  ._meta.steps.xform.sca   = vec3(1 1 1);
+
