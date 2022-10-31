@@ -17,7 +17,7 @@
 6. Copy **Bella** plugin scripts to **`\\\\SAURON\DeadlineRepository10\plugins\'**
 7. Copy **Bella** submission scripts to **`\\\\SAURON\DeadlineRepository10\scripts\Submission\'**
 8. Copy sample scenes to  **`\\\\SAURON\DeadlineRepository10\BellaShared\'**
-9. From **`Computer1`** right click **deadlinelauncher** in systemtray **Submit->BellaTimeOfDay**
+9. From **`Computer_1`** right click **deadlinelauncher** in systemtray **Submit->BellaTimeOfDay**
 10. Choose sample scene **\\\\SAURON\DeadlineRepository10\BellaShared\BellaTimeOfDay.bsx**  
 11. Hit submit and go make a sandwich 
 12. right click systemtray->**deadlinelauncher**->Launch **Monitor** to check on renderfarm
@@ -83,7 +83,7 @@ erDiagram
 `DeadlineClient-10.1.23.6-windows-installer.exe`
 
 ##### Here are some of the client programs in:
-`**C:\Program Files\Thinkbox\Deadline10\bin\**`
+`C:\Program Files\Thinkbox\Deadline10\bin\`
 
 ##### Deadline's Launcher<sup>Hub for all tools</sup>
 ```
@@ -112,12 +112,11 @@ The Deadline server provides instructions and render data to the clients
 ##### Repository
 ```
 Shared renderfarm software and job data
-Copy Bella plugin here and all clients will source it from here.
+Copy Bella plugin here and all clients can use it. 
 ```
 
 ##### Database
 ```
-Open source NoSQL relational database called MongoDB listening on port 27100
 This accepts job submissions and tracks fullfillment.
 ```
 
@@ -181,9 +180,10 @@ Even though Remote Connection Server is recommended, choose **Direct Connection*
 - Reboot and log into Windows
 - **deadlinelauncher.exe** should start 
 - if **not** start it C:\Program Files\Thinkbox\Deadline10\bin\deadlinelauncher.exe
-- Windows will ask for network permission<sup>admin password required</sup>
+- Windows Defender Firewall will ask for network permission<sup>admin password required</sup>
 - **deadlineworker.exe** should also start  
-- Windows will ask for network permission<sup>admin password required</sup>
+- Windows Defender Firewall will ask for network permission<sup>admin password required</sup>
+> When you start any Deadline app for the first time, Windows Defender Firewall will request permission
 
 This popping up on your client computers means the **Deadline** Repository and Database were set up correctly
 
@@ -199,5 +199,63 @@ Click on the **Worker Information** tab
 - Make sure Bella CLI installs to this location
 - `C:\Program Files\Diffuse Logic\Bella CLI\bella_cli.exe`
 
+## STEP E: Install Deadline plugin for Bella from one computer
+Get the code with
+>git clone https://github.com/oomer/bellarenderfarm.git
 
+or 
+
+> https://github.com/oomer/bellarenderfarm/archive/refs/heads/main.zip
+
+
+### Bella plugin directory with code and settings
+- In the zip folder **bellarenderfarm**/DeadlineRepository10/custom/plugins/ copy the entire **Bella** directory to the **Repository**
+ at \\\\SAURON\DeadlineRepository10\custom\plugins\
+
+### Submission GUI code
+- In the zip folder **bellarenderfarm**/DeadlineRepository10/custom/scripts/Submission/ copy the script **Bella.py** to the **Repository**
+at \\SAURON\DeadlineRepository10\custom\scripts\Submission\
+
+### Samples to get you started
+- In the zip folder **bellarenderfarm**/DeadlineRepository10/ copy the entire **BellaShared** folder to the **Repository**
+at \\SAURON\DeadlineRepository10\
+
+Four files should look like this in the `Repository`
+```sh
+\\SAURON\DeadlineRepository10\custom\plugins\Bella\bella.ico
+\\SAURON\DeadlineRepository10\custom\plugins\Bella\Bella.param
+\\SAURON\DeadlineRepository10\custom\plugins\Bella\Bella.py
+\\SAURON\DeadlineRepository10\custom\scripts\Submission\BellaSubmission.py
+```
+
+Optionally copy over the directory `BellaShared` to \\\\SAURON\DeadlineRepository10 if you need some bella samples
+
+## STEP F: Submit a sample bella scene from the launcher
+A GUI submission dailog is available from any machine you have installed **deadlinelauncher.exe** or **deadlinemonitor.exe**
+
+In the systemtray, hovering over the Deadline Launcher icon should show your are connected
+![](/assets/images/2022-10-31-12-44-19.png)
+
+Right clicking on the systemtray deadline launcher will bring up the Submit menu
+![](/assets/images/2022-10-31-12-49-30.png) 
+
+File browse and directory browse making sure **Bella File** and **Image Output Directory** are both **network** accessible from all computers or else your render will fail. Hit Submit.
+![](/assets/images/2022-10-31-12-51-37.png)
+
+## STEP G: Submit a sample animation from the monitor
+Right click on the systemtray deadline launcher and select **Launch Monitor**
+the monitor should appear with 3 main areas Jobs, Task and Workers
+![](/assets/images/2022-10-31-12-58-48.png)
+
+>The Job area should have one entry for the bella submission you made in STEP F. If it is 100% completed blue or green and being worked on, that is good. 
+
+Select the **Job** and the **Task** window will which computer worked on that task and the status. If you have errors, double click on the task and then double click on the log to show the rendering console output from bella_cli. 
+
+> If you have errors, read the logs to figure out what the problem is.
+90% of the time the problems are network related or permissions related. 
+
+Try submitting the animation sequence 
+
+![](/assets/images/2022-10-31-13-11-14.png)
+Enjoy
 
