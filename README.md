@@ -1,6 +1,8 @@
 ## Oversimplified setup of a tiny Windows Bella renderfarm 
 
-> ***Deadline*** is free-to-use software to create a renderfarm. It has 20 years of features and security wrappers ideal for the biggest of studios. This guide basically ignores most of those features and security wrappers to help a lone artist set up a tiny renderfarm. Hopefully this oversimplification will get you rendering a Bella scene on five computers by the end of the day. Once you are happy it works, I recommend you read Thinkbox's documentation to audit your security and performance and to explore all the advanced features.
+> THIS code is no longer developed but will remain for educational purposes. All future work will occur in the Linux based installers at https://github.com/oomer/oomerfarm
+
+***Deadline*** is free-to-use software to create a renderfarm. It has 20 years of features and security wrappers ideal for the biggest of studios. This guide basically ignores most of those features and security wrappers to help a lone artist set up a tiny renderfarm. Hopefully this oversimplification will get you rendering a Bella scene on five computers by the end of the day. Once you are happy it works, I recommend you read Thinkbox's documentation to audit your security and performance and to explore all the advanced features.
 
 
 
@@ -22,43 +24,6 @@
 11. Hit submit and go make a sandwich 
 12. right click systemtray->**deadlinelauncher**->Launch **Monitor** to check on renderfarm
 
-```mermaid
-erDiagram
-9   Computer_2 ||--o{ SAURON: "Hey database is there work? "
-    Computer_2 {
-        hub deadlinelauncher
-        client deadlineworker
-        renderer bella_cli
-    }
-    Computer_3 ||--o{ SAURON: "Hey database is there work?"
-    Computer_3 {
-        hub deadlinelauncher
-        client deadlineworker
-        renderer bella_cli
-    }
-    Computer_4 ||--o{ SAURON: "Hey database is there work?"
-    Computer_4 {
-        hub deadlinelauncher
-        client deadlineworker
-        renderer bella_cli
-    }
-    SAURON {
-        hub deadlinelauncher
-        client deadlineworker
-        renderer bella_cli
-        server DeadlineRepository10
-        server MongoDB
-    }
-
-    SAURON ||--o{ Computer_1: "Hey, I want renders"
-    Computer_1{
-        hub deadlinelauncher
-        client deadlineworker
-        renderer bella_cli
-        create_scene Rhino-Maya-Sketchup-BellaGUI
-        submit_scene via-deadlinelauncher-or-deadlinemonitor
-    }
-```
 
 ### Bella 
 
